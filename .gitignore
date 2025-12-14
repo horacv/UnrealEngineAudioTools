@@ -84,3 +84,6 @@ DerivedDataCache/*
 FMODStudio/*
 FMODStudioNiagara/*
 FMODStudioOpenXR/*
+Wwise/*
+WwiseNiagara/*
+WwiseSoundEngine/*
