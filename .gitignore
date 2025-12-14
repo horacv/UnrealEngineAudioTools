@@ -79,3 +79,8 @@ DerivedDataCache/*
 
 /*/Binaries
 /*/Intermediate
+
+#Audio Libraries
+FMODStudio/*
+FMODStudioNiagara/*
+FMODStudioOpenXR/*
