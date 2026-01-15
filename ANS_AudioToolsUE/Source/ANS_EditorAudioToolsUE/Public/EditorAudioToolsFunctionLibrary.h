@@ -91,6 +91,7 @@ public:
 	 * The assets are automatically saved and checked out after modification (only if changes were made).
 	 * @param Assets Array of asset objects to which metadata entries will be added. Each asset must be a valid UObject.
 	 * @param MetadataEntries Array of metadata entries to add. Each entry contains a Tag (FName) and Value (FString) pair.
+	 * @param bAutoSave If true, the assets will be automatically saved after adding metadata. Default is true.
 	 * @return True if the assets were successfully saved after adding metadata, false otherwise.
 	 * @note This function modifies and saves assets. Can't be reverted with undo. Use with caution as it will mark assets as dirty and trigger source control operations.
 	 * @see RemoveMetadataEntriesInAssetObjects for removing specific metadata entries
@@ -98,13 +99,14 @@ public:
 	 * @see RemoveMetadataTagsInAssetObjects for removing metadata by tag only (regardless of value)
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Editor Audio Tools UE", meta = (DisplayName = "Add Metadata Entries To Asset Objects"))
-	static bool AddMetadataEntriesToAssetObjects(TArray<UObject*> Assets, TArray<FEditorAudioToolsAssetMetadata> MetadataEntries);
+	static bool AddMetadataEntriesToAssetObjects(TArray<UObject*> Assets, TArray<FEditorAudioToolsAssetMetadata> MetadataEntries, bool bAutoSave = true);
 
 	/**
 	 * Removes all metadata entries from multiple asset objects.
 	 * Iterates through each asset and removes all of its metadata tag-value pairs.
 	 * The assets are automatically saved and checked out after modification (only if changes were made).
 	 * @param Assets Array of asset objects from which all metadata entries will be removed. Each asset must be a valid UObject.
+	 * @param bAutoSave If true, the assets will be automatically saved after adding metadata. Default is true.
 	 * @return True, if the assets were successfully saved after removing all metadata, false otherwise.
 	 * @note This function modifies and saves assets. Can't be reverted with undo. Use with caution as it will mark assets as dirty and trigger source control operations.
 	 * @see RemoveMetadataEntriesInAssetObjects for removing specific metadata entries by tag and value
@@ -112,7 +114,7 @@ public:
 	 * @see AddMetadataEntriesToAssetObjects for adding metadata by tag and value
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Editor Audio Tools UE", meta = (DisplayName = "Remove All Metadata Entries In Asset Objects"))
-	static bool RemoveAllMetadataEntriesInAssetObjects(TArray<UObject*> Assets);
+	static bool RemoveAllMetadataEntriesInAssetObjects(TArray<UObject*> Assets, bool bAutoSave = true);
 
 	/**
 	 * Removes specific metadata tag-value pairs from multiple asset objects.
@@ -122,6 +124,7 @@ public:
 	 * @param Assets Array of asset objects from which matching metadata entries will be removed. Each asset must be a valid UObject.
 	 * @param MetadataEntries Array of metadata entries to remove. Each entry contains a Tag (FName) and Value (FString) pair that must match exactly.
 	 * @param bIgnoreCaseInValue If true, performs case-insensitive string comparison when matching values. If false, requires an exact case match.
+	 * @param bAutoSave If true, the assets will be automatically saved after adding metadata. Default is true.
 	 * @return True, if the assets were successfully saved after removing metadata entries, false otherwise.
 	 * @note This function modifies and saves assets. Can't be reverted with undo. Use with caution as it will mark assets as dirty and trigger source control operations.
 	 * @see RemoveAllMetadataEntriesInAssetObjects for removing all metadata from assets
@@ -129,7 +132,7 @@ public:
 	 * @see AddMetadataEntriesToAssetObjects for adding metadata by tag and value
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Editor Audio Tools UE", meta = (DisplayName = "Remove Metadata Entries In Asset Objects"))
-	static bool RemoveMetadataEntriesInAssetObjects(TArray<UObject*> Assets, TArray<FEditorAudioToolsAssetMetadata> MetadataEntries, const bool bIgnoreCaseInValue);
+	static bool RemoveMetadataEntriesInAssetObjects(TArray<UObject*> Assets, TArray<FEditorAudioToolsAssetMetadata> MetadataEntries, const bool bIgnoreCaseInValue, bool bAutoSave = true);
 
 	/**
 	 * Removes specific metadata tags from multiple asset objects regardless of their values.
@@ -138,6 +141,7 @@ public:
 	 * The assets are automatically saved and checked out after modification (only if changes were made).
 	 * @param Assets Array of asset objects from which the specified metadata tags will be removed. Each asset must be a valid UObject.
 	 * @param Tags Array of metadata tag names (FName) to remove from the assets. Any metadata entry with a matching tag name will be removed.
+	 * @param bAutoSave If true, the assets will be automatically saved after adding metadata. Default is true.
 	 * @return True if the assets were successfully saved after removing metadata tags, false otherwise.
 	 * @note This function modifies and saves assets. Can't be reverted with undo. Use with caution as it will mark assets as dirty and trigger source control operations.
 	 * @see RemoveMetadataEntriesInAssetObjects for removing metadata by both tag and value
@@ -145,5 +149,5 @@ public:
 	 * @see AddMetadataEntriesToAssetObjects for adding metadata by tag and value
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Editor Audio Tools UE", meta = (DisplayName = "Remove Metadata Tags In Asset Objects"))
-	static bool RemoveMetadataTagsInAssetObjects(TArray<UObject*> Assets, TArray<FName> Tags);
+	static bool RemoveMetadataTagsInAssetObjects(TArray<UObject*> Assets, TArray<FName> Tags, bool bAutoSave = true);
 };

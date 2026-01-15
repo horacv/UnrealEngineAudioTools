@@ -104,10 +104,8 @@ TArray<FAssetData> UEditorAudioToolsFunctionLibrary::FilterAssetsByMetadataTagAn
 	return FilteredAssets;
 }
 
-bool UEditorAudioToolsFunctionLibrary::AddMetadataEntriesToAssetObjects(TArray<UObject*> Assets, TArray<FEditorAudioToolsAssetMetadata> MetadataEntries)
+bool UEditorAudioToolsFunctionLibrary::AddMetadataEntriesToAssetObjects(TArray<UObject*> Assets, TArray<FEditorAudioToolsAssetMetadata> MetadataEntries, const bool bAutoSave)
 {
-	constexpr bool bSaveOnlyIfDirty = true;
-
 	for (UObject* Object : Assets)
 	{
 		for (const auto& [Tag, Value] : MetadataEntries)
@@ -116,13 +114,17 @@ bool UEditorAudioToolsFunctionLibrary::AddMetadataEntriesToAssetObjects(TArray<U
 		}
 	}
 	
-	return UEditorAssetLibrary::SaveLoadedAssets(Assets, bSaveOnlyIfDirty);
+	if (bAutoSave)
+	{
+		constexpr bool bSaveOnlyIfDirty = true;
+		return UEditorAssetLibrary::SaveLoadedAssets(Assets, bSaveOnlyIfDirty);
+	}
+	
+	return false;
 }
 
-bool UEditorAudioToolsFunctionLibrary::RemoveAllMetadataEntriesInAssetObjects(TArray<UObject*> Assets)
+bool UEditorAudioToolsFunctionLibrary::RemoveAllMetadataEntriesInAssetObjects(TArray<UObject*> Assets, const bool bAutoSave)
 {
-	constexpr bool bSaveOnlyIfDirty = true;
-
 	for (UObject* Object : Assets)
 	{
 		for (const auto& [Tag, Value] : UEditorAssetLibrary::GetMetadataTagValues(Object))
@@ -131,12 +133,17 @@ bool UEditorAudioToolsFunctionLibrary::RemoveAllMetadataEntriesInAssetObjects(TA
 		}
 	}
 	
-	return UEditorAssetLibrary::SaveLoadedAssets(Assets, bSaveOnlyIfDirty);
+	if (bAutoSave)
+	{
+		constexpr bool bSaveOnlyIfDirty = true;
+		return UEditorAssetLibrary::SaveLoadedAssets(Assets, bSaveOnlyIfDirty);
+	}
+	
+	return false;
 }
 
-bool UEditorAudioToolsFunctionLibrary::RemoveMetadataEntriesInAssetObjects(TArray<UObject*> Assets, TArray<FEditorAudioToolsAssetMetadata> MetadataEntries, const bool bIgnoreCaseInValue)
+bool UEditorAudioToolsFunctionLibrary::RemoveMetadataEntriesInAssetObjects(TArray<UObject*> Assets, TArray<FEditorAudioToolsAssetMetadata> MetadataEntries, const bool bIgnoreCaseInValue, const bool bAutoSave)
 {
-	constexpr bool bSaveOnlyIfDirty = true;
 	const ESearchCase::Type SearchCase = bIgnoreCaseInValue ? ESearchCase::IgnoreCase : ESearchCase::CaseSensitive;
 	
 	for (UObject* Object : Assets)
@@ -153,13 +160,17 @@ bool UEditorAudioToolsFunctionLibrary::RemoveMetadataEntriesInAssetObjects(TArra
 		}
 	}
 	
-	return UEditorAssetLibrary::SaveLoadedAssets(Assets, bSaveOnlyIfDirty);
+	if (bAutoSave)
+	{
+		constexpr bool bSaveOnlyIfDirty = true;
+		return UEditorAssetLibrary::SaveLoadedAssets(Assets, bSaveOnlyIfDirty);
+	}
+	
+	return false;
 }
 
-bool UEditorAudioToolsFunctionLibrary::RemoveMetadataTagsInAssetObjects(TArray<UObject*> Assets, TArray<FName> Tags)
+bool UEditorAudioToolsFunctionLibrary::RemoveMetadataTagsInAssetObjects(TArray<UObject*> Assets, TArray<FName> Tags, const bool bAutoSave)
 {
-	constexpr bool bSaveOnlyIfDirty = true;
-	
 	for (UObject* Object : Assets)
 	{
 		for (const FName Tag : Tags)
@@ -168,7 +179,13 @@ bool UEditorAudioToolsFunctionLibrary::RemoveMetadataTagsInAssetObjects(TArray<U
 		}
 	}
 	
-	return UEditorAssetLibrary::SaveLoadedAssets(Assets, bSaveOnlyIfDirty);
+	if (bAutoSave)
+	{
+		constexpr bool bSaveOnlyIfDirty = true;
+		return UEditorAssetLibrary::SaveLoadedAssets(Assets, bSaveOnlyIfDirty);
+	}
+	
+	return false;
 }
 
 

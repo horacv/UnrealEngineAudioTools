@@ -20,5 +20,11 @@
 			"LoadingPhase": "Default"
 		}
 	],
-	"SupportURL": ""
+	"SupportURL": "",
+	"Plugins": [
+		{
+			"Name": "EditorTests",
+			"Enabled": true
+		}
+	]
 }
