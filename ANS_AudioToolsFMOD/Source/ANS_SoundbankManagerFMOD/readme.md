@@ -2,7 +2,7 @@
 
 Runtime plugin for managing FMOD soundbanks in Unreal Engine through a Game Instance subsystem.
 
-![ANS_SoundbankManagerFMOD_Nodes.png](../../images/ANS_SoundbankManagerFMOD_Nodes.png)
+![ANS_SoundbankManagerFMOD_Nodes.png](../../Images/ANS_SoundbankManagerFMOD_Nodes.png)
 
 ## Features
 
@@ -21,17 +21,17 @@ Provides a Game Instance subsystem and an actor component for FMOD soundbank man
 3. Run the editor and compile the plugin
 4. Go to Edit > Plugins and verify ANS_AudioToolsFMOD is enabled
 5. Go to Project Settings > Game > Asset Manager and add B_SoundbankManagerFmod to the list of primary asset types to scan
-![ANS_SoundbankManagerFMOD_BPAssets.png](../../images/ANS_SoundbankManagerFMOD_BPAssets.png)
+![ANS_SoundbankManagerFMOD_BPAssets.png](../../Images/ANS_SoundbankManagerFMOD_BPAssets.png)
 
-![ANS_SoundbankManagerFMOD_AssetManager.png](../../images/ANS_SoundbankManagerFMOD_AssetManager.png)
+![ANS_SoundbankManagerFMOD_AssetManager.png](../../Images/ANS_SoundbankManagerFMOD_AssetManager.png)
 
 5. Add entries to DT_AlwaysLoadedFmodSoundbanks for persistent soundbanks
 
-![ANS_SoundbankManagerFMOD_DataTable.png](../../images/ANS_SoundbankManagerFMOD_DataTable.png)
+![ANS_SoundbankManagerFMOD_DataTable.png](../../Images/ANS_SoundbankManagerFMOD_DataTable.png)
 
 6. Add SoundbankComponentFmod to any actor that needs dynamic soundbank management
 
-![ANS_SoundbankManagerFMOD_Component.png](../../images/ANS_SoundbankManagerFMOD_Component.png)
+![ANS_SoundbankManagerFMOD_Component.png](../../Images/ANS_SoundbankManagerFMOD_Component.png)
 
 ### Common Workflows
 
