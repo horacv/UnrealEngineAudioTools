@@ -1,8 +1,8 @@
 {
 	"FileVersion": 3,
-	"Version": 0,
+	"Version": 1,
 	"VersionName": "0.1",
-	"FriendlyName": "ANS_AudioToolsUE",
+	"FriendlyName": "ANS_AudioToolsFMOD",
 	"Description": "",
 	"Category": "Audio",
 	"CreatedBy": "Above Noise Studios - Horacio Valdivieso",
@@ -15,24 +15,17 @@
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "ANS_EditorAudioToolsUE",
-			"Type": "Editor",
+			"Name": "ANS_SoundbankManagerFMOD",
+			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
 	],
 	"SupportURL": "",
 	"Plugins": [
 		{
-			"Name": "EditorTests",
-			"Enabled": true
-		},
-		{
-			"Name": "AssetManagerEditor",
-			"Enabled": true
-		},
-		{
-			"Name": "EditorScriptingUtilities",
+			"Name": "FMODStudio",
 			"Enabled": true
 		}
-	]
+	],
+	"Sealed": true
 }
